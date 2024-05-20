@@ -1,0 +1,275 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Existing global styles */
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    Segoe UI,
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    Fira Sans,
+    Droid Sans,
+    Helvetica Neue,
+    sans-serif;
+    background-image: linear-gradient(to right, #420573, #e5e7eb);
+
+}
+body::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.4), transparent);
+  pointer-events: none; /* Ensures clicks pass through to elements below */
+}
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1200px; /* Set a max-width for all containers */
+  width: 100%; /* Ensure it takes up 100% until max-width */
+  margin: 0 auto; /* Center the container */
+  padding: 0 1rem; /* Optional padding */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+main {
+  padding: 5rem 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+footer {
+  width: 100%;
+  height: 100px;
+  border-top: 1px solid #eaeaea;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer img {
+  margin-left: 0.5rem;
+}
+
+footer a,
+a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: inherit;
+  text-decoration: none;
+}
+
+.title a {
+  color: #0070f3;
+  text-decoration: none;
+}
+
+.title a:hover,
+.title a:focus,
+.title a:active {
+  text-decoration: underline;
+}
+
+.title {
+  margin: 0;
+  line-height: 1.15;
+  font-size: 4rem;
+  text-align: center;
+}
+
+.subtitle {
+  font-size: 2rem;
+}
+
+.description {
+  line-height: 1.5;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+code {
+  background: #fafafa;
+  border-radius: 5px;
+  padding: 0.75rem;
+  font-size: 1.1rem;
+  font-family:
+    Menlo,
+    Monaco,
+    Lucida Console,
+    Liberation Mono,
+    DejaVu Sans Mono,
+    Bitstream Vera Sans Mono,
+    Courier New,
+    monospace;
+}
+
+.grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 800px;
+  margin-top: 3rem;
+}
+
+.card {
+  width: 640px;
+  background: linear-gradient(to right, #43116c, #e5e7eb); /* Adjusted to match body gradient */
+  transition: duration-300 ease-in-out;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* Enhanced shadow for depth */
+  border-radius: 0.5rem;
+  border: 1px solid #e2e8f0;
+}
+.card:hover {
+  background-color: #f3e8ff; /* A lighter purple shade for a noticeable change */
+  transform: scale(1.03); /* Slightly scale up the card */
+  box-shadow: 0 30px 40px -12px rgba(0, 0, 0, 0.3); /* Increase shadow for more depth */
+  border-color: #c084fc; /* Change border color to a complementary purple */
+}
+.card h3 {
+  font-size: text-lg;
+  font-weight: font-semibold;
+  padding: p-4;
+  display: block;
+  text-align: center;
+}
+.card p {
+  padding-left: px-4;
+  padding-bottom: pb-4;
+  display: block;
+  text-align: center;
+}
+
+.logo {
+  height: 1em;
+}
+
+@media (max-width: 600px) {
+  .grid {
+    width: 100%;
+    flex-direction: column;
+  }
+}
+.sidebar {
+  width: 120px; /* Adjust width as needed */
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  background: linear-gradient(to right, #43116c, #e5e7eb);
+  box-shadow: 2px 0 12px rgba(0,0,0,0.1);
+  z-index: 1000;
+  transform: translateX(0);
+  transition: transform 0.3s ease-in-out;
+  
+}
+
+.sidebar-header {
+  padding: 20px;
+  background: linear-gradient(to right, #43116c, #e5e7eb);
+  border-bottom: 1px solid #ddd;
+}
+.sidebar-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center items horizontally in the flex container */
+}
+.sidebar-links li {
+  list-style: none;
+  padding: 4px 0;
+}
+
+.sidebar-links a {
+  display: inline-block; /* Changed from block to inline-block */
+  padding: 10px 20px;
+  font-weight: bold;
+  color: white; /* Adjust text color */
+  text-decoration: none;
+  background-image: linear-gradient(145deg, var(--color-light-purple), var(--color-purple)); /* Gradient background */
+  border-radius: 12px; /* Rounded corners */
+  transition: all 0.3s ease;
+  text-align: center; /* Center text */
+  width: 100px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+}
+
+.sidebar-links a:hover {
+  background-image: linear-gradient(145deg, var(--color-purple), var(--color-light-purple)); /* Invert gradient on hover */
+  transform: translateY(-2px); /* Lift button on hover */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Larger shadow on hover */
+}
+
+.sidebar-links a:active {
+  transform: translateY(1px); /* Push button down on click */
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1); /* Smaller shadow on click */
+}
+/* Smaller devices */
+@media (max-width: 600px) {
+  .logo {
+    height: 1.5em;
+  }
+}
+
+/* Larger devices */
+@media (min-width: 1201px) {
+  .logo {
+    height: 3em;
+  }
+}
+/* Menu Button Styles */
+.menu-button,.user-button-large {
+  display: inline-flex; /* Changed to inline-flex to center content */
+  align-items: center; /* Center content vertically */
+  justify-content: center; /* Center content horizontally */
+  width: 100px; /* Set width to 100% of their container */
+  padding: 8px 8px;
+  margin: 5px;
+  background-image: linear-gradient(145deg, var(--color-light-purple), var(--color-purple));
+  color: white;
+  text-align: center;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.menu-button:hover, .user-button-large:hover {
+  background-image: linear-gradient(145deg, var(--color-light-purple), var(--color-purple)); /* Change gradient on hover */
+  transform: translateY(-2px); /* Lift button on hover */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Larger shadow on hover */
+}
+
+.menu-button:active, .user-button-large:active {
+  transform: translateY(1px); /* Push button down on click */
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1); /* Smaller shadow on click */
+}
+.helpLinks {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.helpLinks a {
+  color: #d403f9;
+  text-decoration: none;
+}
