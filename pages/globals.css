@@ -184,7 +184,7 @@ code {
 }
 
 .sidebar-header {
-  padding: 20px;
+  padding: 10px;
   background: linear-gradient(to right, #43116c, #e5e7eb);
   border-bottom: 1px solid #ddd;
   display: flex; /* Ensure flex display */
