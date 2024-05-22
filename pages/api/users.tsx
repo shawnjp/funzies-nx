@@ -8,21 +8,26 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   
   switch (req.method) {
     case 'GET': {
-      if (!req.query.id) {
-        res.status(400).json({ message: 'User ID is required' });
+      const { id, clerkId } = req.query;
+
+      if (!id && !clerkId) {
+        res.status(400).json({ message: 'User ID or Clerk ID is required' });
         return;
       }
-    
+
       try {
-        const id = new ObjectId(req.query.id as string);
-        const user = await db.collection('users').findOne({ _id: id });
+        const query = id ? { _id: new ObjectId(id as string) } : { clerkId: clerkId as string };
+        console.log('Attempting to fetch user with Clerk ID:', clerkId);
+        const user = await db.collection('users').findOne(query);
+        console.log('Fetched User Data by Clerk ID:', user);
+        
         if (user) {
           res.status(200).json({ user, isInDb: true });
         } else {
           res.status(404).json({ message: 'User not found' });
         }
       } catch (error) {
-        res.status(400).json({ message: 'Invalid User ID format' });
+        res.status(400).json({ message: 'Invalid User ID or Clerk ID format' });
       }
       break;
     }
