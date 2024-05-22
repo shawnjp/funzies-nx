@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
-import { UserButton, SignedIn, SignedOut, useClerk, SignInButton } from '@clerk/nextjs';
+import { UserButton, SignedIn, SignedOut, useClerk, SignInButton,useUser } from '@clerk/nextjs';
 import { useRouter } from 'next/router';
 
 const Sidebar = () => {
@@ -12,12 +12,11 @@ const Sidebar = () => {
   return (
     <div className={`sidebar w-84 h-full shadow-md bg-white absolute inset-y-0 left-0 transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} md:relative transition duration-200 ease-in-out`}>
       <div className="sidebar-header p-5 flex justify-between items-center bg-gradient-to-r from-purple-500 to-indigo-500">
-            <SignedIn>
-          <UserButton /> {/* Displayed when user is signed in */}
+        <SignedIn>
+          <UserButton />
         </SignedIn>
         <SignedOut>
-          <SignInButton ><a className="sidebar-signin">Sign In</a></SignInButton>
-        
+          <SignInButton ><a className="sidebar-signin">Sign In</a></SignInButton>                 
         </SignedOut>
       </div>
       <ul className="sidebar-links flex flex-col items-center">

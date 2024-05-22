@@ -1,6 +1,7 @@
 import Head from "next/head";
 import clientPromise from "../lib/mongodb";
 import type { InferGetServerSidePropsType, GetServerSideProps } from "next";
+import MusicUpload from '../components/MusicUpload';
 
 type ConnectionStatus = {
   isConnected: boolean;
@@ -45,7 +46,7 @@ export default function Home({
         <h1 className="text-4xl font-bold text-center">
           Welcome to <a href="https://nextjs.org" className="text-blue-600 hover:underline">Audities</a>
         </h1>
-
+        <MusicUpload />
         {isConnected ? (
           <h2 className="text-2xl">You are connected to MongoDB</h2>
         ) : (
