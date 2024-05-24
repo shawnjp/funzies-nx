@@ -279,3 +279,41 @@ code {
   text-decoration: none;
 }
 
+.grid2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 800px;
+  margin-top: 3rem;
+}
+
+.card2 {
+  width: 320px;
+  height: 320px;
+  background: linear-gradient(to right, #43116c, #e5e7eb); /* Adjusted to match body gradient */
+  transition: duration-300 ease-in-out;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* Enhanced shadow for depth */
+  border-radius: 0.5rem;
+  border: 1px solid #e2e8f0;
+  text-align: center;
+}
+.card2:hover {
+  background-color: #f3e8ff; /* A lighter purple shade for a noticeable change */
+  transform: scale(1.03); /* Slightly scale up the card */
+  box-shadow: 0 30px 40px -12px rgba(0, 0, 0, 0.3); /* Increase shadow for more depth */
+  border-color: #c084fc; /* Change border color to a complementary purple */
+}
+.card2 h3 {
+  font-size: text-lg;
+  font-weight: font-semibold;
+  padding: p-4;
+  display: block;
+  text-align: center;
+}
+.card2 p {
+  padding-left: px-4;
+  padding-bottom: pb-4;
+  display: block;
+  text-align: center;
+}

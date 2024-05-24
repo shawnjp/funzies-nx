@@ -1,7 +1,17 @@
 import Head from "next/head";
 import clientPromise from "../lib/mongodb";
 import type { InferGetServerSidePropsType, GetServerSideProps } from "next";
-import MusicUpload from '../components/MusicUpload';
+
+
+
+const handleFormSubmit = async (formData: FormData) => {
+  const response = await fetch('/api/inventory', {
+    method: 'POST',
+    body: formData,
+  });
+  const data = await response.json();
+  console.log('Response:', data);
+};
 
 type ConnectionStatus = {
   isConnected: boolean;
@@ -37,7 +47,7 @@ export default function Home({
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
     <div className="container mx-auto px-4 flex flex-col items-center justify-center min-h-screen">
-      <Head>
+      <Head> 
         <title>Audhdities</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -46,7 +56,6 @@ export default function Home({
         <h1 className="text-4xl font-bold text-center">
           Welcome to <a href="https://nextjs.org" className="text-blue-600 hover:underline">Audities</a>
         </h1>
-        <MusicUpload />
         {isConnected ? (
           <h2 className="text-2xl">You are connected to MongoDB</h2>
         ) : (
