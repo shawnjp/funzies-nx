@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import { useUser } from '@clerk/nextjs';
-
+import RoleBadge from '../components/RoleBadge';
 // Define the context shape
 interface AuthContextType {
   isAdmin: boolean;
@@ -8,18 +8,29 @@ interface AuthContextType {
   fetchUsers: () => Promise<void>;
 }
 
-// Create the context
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-// Provider component
 export const AuthProvider: React.FC = ({ children }) => {
   const { user } = useUser();
   const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
-    // Optionally check admin status here
-    setIsAdmin(!!user?.publicMetadata?.isAdmin || false);
+    if (user) {
+      fetchAdminStatus(user.id);
+    }
   }, [user]);
+
+  const fetchAdminStatus = async (clerkId: string) => {
+    try {
+      const response = await fetch(`/api/users?clerkId=${clerkId}`);
+      const data = await response.json();
+      if (data.user) {
+        setIsAdmin(data.user.isAdmin);  // Assuming `isAdmin` is a property of the user object in your database
+      }
+    } catch (error) {
+      console.error('Error fetching admin status:', error);
+    }
+  };
 
   const fetchUsers = async () => {
     if (!user) {
