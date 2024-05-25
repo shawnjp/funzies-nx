@@ -414,15 +414,19 @@ code {
 }
 
 .modal-content {
-  background: white;
+  background: rgba(194, 124, 252, 0.5);;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
   position: relative;
   z-index: 1051;
-  
+  align-items: center;
+  color: white;
 }
-
+.modal-content label {
+  color: white; /* Set text color to white */
+  text-align: center; /* Center text horizontally */
+}
 .modal-close {
   position: absolute;
   top: 10px;
