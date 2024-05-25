@@ -1,24 +1,39 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import { useUser } from '@clerk/nextjs';
 
-// Define the context shape
 interface AuthContextType {
   isAdmin: boolean;
   user: ReturnType<typeof useUser>['user'];
   fetchUsers: () => Promise<void>;
 }
 
-// Create the context
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-// Provider component
 export const AuthProvider: React.FC = ({ children }) => {
   const { user } = useUser();
   const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
-    // Optionally check admin status here
-    setIsAdmin(!!user?.publicMetadata?.isAdmin || false);
+    const fetchAdminStatus = async () => {
+      if (user) {
+        try {
+          const response = await fetch(`/api/users?clerkId=${user.id}`, {
+            method: 'GET'
+          });
+          const data = await response.json();
+          if (response.ok && data.user) {
+            setIsAdmin(data.user.isAdmin);
+          } else {
+            setIsAdmin(false);
+          }
+        } catch (error) {
+          console.error('Error fetching admin status:', error);
+          setIsAdmin(false);
+        }
+      }
+    };
+
+    fetchAdminStatus();
   }, [user]);
 
   const fetchUsers = async () => {
@@ -49,7 +64,6 @@ export const AuthProvider: React.FC = ({ children }) => {
   );
 };
 
-// Custom hook to use the auth context
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (context === undefined) {

@@ -230,6 +230,12 @@ code {
   transform: translateY(1px); /* Push button down on click */
   box-shadow: 0 2px 3px rgba(250, 210, 13, 0.927); /* Smaller shadow on click */
 }
+.admin-divider {
+  height: 2px; /* Set the thickness of the divider */
+  background-color: white; /* Set the color of the divider */
+  width: 90%; /* Set the width relative to its container */
+  margin: 10px auto; /* Center the divider and add vertical spacing */
+}
 /* Smaller devices */
 @media (max-width: 600px) {
   .logo {
@@ -316,4 +322,59 @@ code {
   padding-bottom: pb-4;
   display: block;
   text-align: center;
+}
+/* Form container */
+.container2 {
+  width: 75%; /* Set width to 40% of the viewport */
+  max-width: 600px; /* Maximum width to prevent it from becoming too large */
+  margin: 2rem auto; /* Center it horizontally and add vertical margin */
+  padding: 2rem; /* Padding inside the container */
+  display: flex; /* Using flex to align children */
+  flex-direction: column; /* Stack children vertically */
+  align-items: center; /* Center children horizontally */
+  justify-content: center; /* Center children vertically */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Adds depth */
+  border: 1px solid #e2e8f0; /* Subtle border */
+  background: linear-gradient(to right, #43116c, #e5e7eb);
+  border-radius: 8px; /* Rounded corners for aesthetics */
+}
+
+/* Form input fields and textarea */
+.form-input {
+  width: 100%; /* Full width */
+  padding: 0.75rem; /* Padding inside the input */
+  margin-bottom: 1rem; /* Space between inputs */
+  background-color: white; /* Background color */
+  border: 1px solid #e2e8f0; /* Border color */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds depth */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+.form-input:focus {
+  border-color: #4f46e5; /* Focus border color */
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.3); /* Focus shadow */
+  outline: none; /* Remove default outline */
+}
+
+/* Form button */
+.form-button {
+  width: 100%; /* Full width */
+  padding: 0.75rem; /* Padding inside the button */
+  background-color: #4f3089; /* Button background color */
+  color: white; /* Button text color */
+  border: none; /* Remove default border */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds depth */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+.form-button:hover {
+  background-color: #6a48c8; /* Hover background color */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Hover shadow */
+}
+
+.form-button:active {
+  background-color: #9658e8; /* Active background color */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Active shadow */
 }

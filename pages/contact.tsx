@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Layout from '../components/Layout';
+import ContactForm from '../components/ContactForm'; // Import the ContactForm component
 
 const Contact = () => {
   return (
@@ -13,6 +14,7 @@ const Contact = () => {
         <p className="mt-6 text-lg text-center">
           Have any questions? Reach out to us through the following methods.
         </p>
+        <ContactForm /> {/* Include the ContactForm component here */}
       </div>
     </Layout>
   );
