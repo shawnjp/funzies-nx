@@ -31,12 +31,16 @@ const Sidebar = () => {
         ))}
         <SignedIn>
         {isAdmin && (
+          <>
+           <hr className="admin-divider" />
             <li className={`sidebar-links-a p-4 hover:bg-gray-100 ${router.pathname === '/inventory' ? 'text-yellow-500 bg-yellow-200' : ''}`}>
               <Link href="/inventory" className={`block p-2 font-bold text-white bg-gradient-to-r from-purple-600 to-blue-500 rounded-lg shadow ${router.pathname === '/inventory' ? 'text-yellow-500 bg-yellow-200' : 'text-white'}`}>
-                Inventory Management
+                Inventory Mgt
               </Link>
             </li>
+            </>
           )}
+          
         </SignedIn>
       </ul>
     </div>
