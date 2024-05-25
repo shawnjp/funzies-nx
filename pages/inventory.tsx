@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import type { NextPage } from 'next';
 import InventoryCard from '../components/inventoryCard';
+import Modal from '../components/Modal';
 
 interface InventoryItem {
   _id: string;
@@ -22,11 +23,22 @@ const Inventory: NextPage = () => {
   const [error, setError] = useState<string | null>(null);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [uploading, setUploading] = useState(false);
-
+  const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [selectedItem, setSelectedItem] = useState<InventoryItem | null>(null);
   useEffect(() => {
     fetchInventory();
     checkAdminStatus();
   }, []);
+
+  const handleCardClick = (_id: string) => {
+    console.log("Clicked item ID:", _id);  // Log the _id of the clicked item
+    const item = inventory.find(item => item._id === _id);
+    setSelectedItem(item || null);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedItem(null);
+  };
 
   const fetchInventory = async () => {
     try {
@@ -88,9 +100,22 @@ const Inventory: NextPage = () => {
             handleFileChange={handleFileChange}
             handleUpload={handleUpload}
             uploading={uploading}
+            onClick={() => handleCardClick(item._id)}
+            expanded={expandedId === item._id}
           />
         ))}
       </div>
+      <Modal isOpen={!!selectedItem} onClose={handleCloseModal}>
+        {selectedItem && <InventoryCard
+          onClick={() => {}}
+          expanded={false}
+          item={selectedItem}
+          isAdmin={isAdmin}
+          handleFileChange={handleFileChange}
+          handleUpload={handleUpload}
+          uploading={uploading}
+        />}
+      </Modal>
     </div>
   );
 };
